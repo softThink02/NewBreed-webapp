@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  NEWBREED colour tokens — RGB triplets consumed by tailwind.config.ts.
+  Adjust here to evolve the palette site-wide.
+*/
+:root {
+  --nb-bg: 246 243 237;       /* warm ivory */
+  --nb-surface: 252 251 248;  /* raised surfaces */
+  --nb-ink: 23 21 17;         /* near-black, warm */
+  --nb-charcoal: 43 40 35;    /* deep charcoal */
+  --nb-muted: 110 103 90;     /* muted text */
+  --nb-border: 226 219 207;   /* hairlines */
+  --nb-accent: 141 74 47;     /* understated clay — used sparingly */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-bg text-ink antialiased;
+}
+
+::selection {
+  @apply bg-ink text-bg;
+}
+
+@layer components {
+  /* Small-caps editorial label used above headings and on metadata. */
+  .eyebrow {
+    @apply block text-[11px] font-medium uppercase tracking-[0.22em] text-muted;
+  }
+
+  /* Consistent horizontal page gutter. */
+  .gutter {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Shared focus treatment for interactive elements. */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+}
